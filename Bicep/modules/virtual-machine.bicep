@@ -3,6 +3,7 @@ param location string
 param tags object = {}
 param subnetId string
 param networkSecurityGroupId string
+param dnsLabelPrefix string = toLower('${vm.name}-${uniqueString(resourceGroup().id)}')
 
 resource publicIPAddressResource 'Microsoft.Network/publicIPAddresses@2024-07-01' = {
   name: '${vm.name}-pip'
@@ -13,6 +14,9 @@ resource publicIPAddressResource 'Microsoft.Network/publicIPAddresses@2024-07-01
   properties: {
     publicIPAllocationMethod: 'Dynamic'
     publicIPAddressVersion: 'IPv4'
+    dnsSettings: {
+      domainNameLabel: dnsLabelPrefix
+    }
     idleTimeoutInMinutes: 4
   }
 }
