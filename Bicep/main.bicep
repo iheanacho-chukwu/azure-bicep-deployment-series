@@ -6,7 +6,6 @@ param vnetParam object
 param vmParam object
 param deploySSHParam bool = false
 param dataDisks array = []
-
 param deploymentNameParam string = 'agentpool'
 
 module resourceGroupUKS 'modules/resource-group.bicep' = {

@@ -1,9 +1,10 @@
 using '../main.bicep'
 
 param deploySSHParam = true
+param deploymentNameParam = 'githubenterpriseserver'
 
 param resourceGroupUKSParam = {
-  name: 'ghesdemo'
+  name: 'demo'
   location: 'uksouth'
 }
 
@@ -25,9 +26,9 @@ param vmParam = {
   name: 'ghes-vm'
   size: 'Standard_D2s_v3'
   imageReference: {
-    publisher: 'Canonical'
-    offer: '0001-com-ubuntu-server-focal'
-    sku: '20_04-lts-gen2'
+    publisher: 'GitHub'
+    offer: 'GitHub-Enterprise'
+    sku: 'github-enterprise-gen2'
     version: 'latest'
   }
   adminUsername: 'ghes'

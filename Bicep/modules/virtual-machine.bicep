@@ -3,7 +3,6 @@ param location string
 param tags object = {}
 param subnetId string
 param networkSecurityGroupId string
-param dataDisks array = []
 
 resource publicIPAddressResource 'Microsoft.Network/publicIPAddresses@2024-07-01' = {
   name: '${vm.name}-pip'
@@ -61,7 +60,7 @@ resource virtualMachineResource 'Microsoft.Compute/virtualMachines@2024-11-01' =
         }
       }
       imageReference: vm.imageReference
-      dataDisks: [for disk in dataDisks: {
+      dataDisks: [for disk in (vm.dataDisks ?? []): {
         lun: disk.lun
         createOption: disk.createOption
         diskSizeGB: disk.diskSizeGB
