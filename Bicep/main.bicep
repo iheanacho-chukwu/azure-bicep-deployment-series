@@ -5,7 +5,7 @@ param tagsParam object
 param vnetParam object
 param vmParam object
 param deploySSHParam bool = false
-param deploymentNameParam string = 'agentpool'
+param deploymentNameParam string
 
 module resourceGroupUKS 'modules/resource-group.bicep' = {
   name: '${deploymentNameParam}-resourceGroup'
