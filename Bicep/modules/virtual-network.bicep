@@ -1,7 +1,6 @@
 param location string
 param tags object = {}
 param vnet object
-param deploySSH bool = false
 
 resource virtualNetworkResource 'Microsoft.Network/virtualNetworks@2024-07-01' = {
   name: vnet.name

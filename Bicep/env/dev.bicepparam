@@ -1,6 +1,5 @@
 using '../main.bicep'
 
-param deploySSHParam = true
 param deploymentNameParam = 'githubenterpriseserver'
 
 param resourceGroupUKSParam = {
@@ -39,12 +38,6 @@ param vmParam = {
       createOption: 'Empty'
       diskSizeGB: 512
       storageAccountType: 'StandardSSD_LRS'
-    }
-    {
-      lun: 1
-      createOption: 'Empty'
-      diskSizeGB: 512
-      storageAccountType: 'Standard_LRS'
     }
   ]
 }
