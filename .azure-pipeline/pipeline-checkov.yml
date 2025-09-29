@@ -2,7 +2,7 @@ variables:
   templateFile: '$(Build.Repository.LocalPath)/Bicep/main.bicep'
   templateFileDir: '$(Build.Repository.LocalPath)/Bicep'
   parametersFile: '$(Build.Repository.LocalPath)/Bicep/env/dev.bicepparam'
-  DeploymentName: 'agentpool'
+  DeploymentName: 'ghes'
   iacReportScriptFolder: '$(Build.Repository.LocalPath)/Scripts'
 
 name: '$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:r)'
