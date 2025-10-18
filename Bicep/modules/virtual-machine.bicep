@@ -3,23 +3,6 @@ param location string
 param tags object = {}
 param subnetId string
 param networkSecurityGroupId string
-param dnsLabelPrefix string = toLower('${vm.name}-${uniqueString(resourceGroup().id)}')
-
-resource publicIPAddressResource 'Microsoft.Network/publicIPAddresses@2024-07-01' = {
-  name: '${vm.name}-pip'
-  location: location
-  sku: {
-    name: 'Basic'
-  }
-  properties: {
-    publicIPAllocationMethod: 'Dynamic'
-    publicIPAddressVersion: 'IPv4'
-    dnsSettings: {
-      domainNameLabel: dnsLabelPrefix
-    }
-    idleTimeoutInMinutes: 4
-  }
-}
 
 resource networkInterfaceResource 'Microsoft.Network/networkInterfaces@2024-07-01' = {
   name: '${vm.name}-nic'
@@ -34,9 +17,6 @@ resource networkInterfaceResource 'Microsoft.Network/networkInterfaces@2024-07-0
             id: subnetId
           }
           privateIPAllocationMethod: 'Dynamic'
-          publicIPAddress: {
-            id: publicIPAddressResource.id
-          }
         }
       }
     ]
